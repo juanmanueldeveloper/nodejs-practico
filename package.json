@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-practico",
+  "version": "1.0.0",
+  "description": "Curso practico de NodeJS en platzi",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon api/index.js"
+  },
+  "author": "Juan Oyarzún",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "nanoid": "^3.1.9"
+  },
+  "devDependencies": {
+    "swagger-ui-express": "^4.1.4"
+  }
+}
