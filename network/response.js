@@ -1,18 +1,20 @@
 const statusMessage = {
     '200': 'Done',
     '201': 'Created',
+    '204' : 'No Content',
     '400': 'Invalid Format',
     '500': 'Internal Error'
 }
 
-exports.success = (req, res, message, status) => {
-    let statusCode = status;
+exports.success = (req, res, message, code) => {
+    let statusCode = code || 200;
     let statusMessage = message;
-    if(!status){
-        status = 200;
-    }
-    if(!message){
-        statusMessage = statusMessages[status];
+
+    if(!message && message !== null){
+        console.log(message)
+        
+        statusMessage = statusMessage[statusCode]
+        console.log(statusMessage)
     }
 
     res.status(statusCode).send({
@@ -22,14 +24,12 @@ exports.success = (req, res, message, status) => {
     })
 }
 
-exports.error = (req, res, message, status, details) => {
-    let statusCode = status;
+exports.error = (req, res, message, code, details) => {
+    let statusCode = code || 500;
     let statusMessage = message;
-    if(!status){
-        status = 500;
-    }
-    if(!message){
-        statusMessage = statusMessages[status];
+
+    if(!message && message !== null){
+        statusMessage = statusMessage[statusCode];
     }
 
     console.error(`[Response error]: ${details}`)

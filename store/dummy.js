@@ -20,7 +20,7 @@ const upsert = async (table, data) => {
     if(!db[table]){
         db[table] = []
     }
-    console.log(db)
+    //console.log(db)
     return db[table].push(data)
 }
 
