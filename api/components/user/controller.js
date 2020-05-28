@@ -37,7 +37,7 @@ module.exports = (injectedStore) => {
                 password: data.password
             })
         }
-
+        console.log('USER UPDATE', user)
         return store.upsert(TABLE, user);
     }
 
@@ -45,10 +45,27 @@ module.exports = (injectedStore) => {
         return store.remove(TABLE, id)
     }
 
+    const follow = (from, to) => {
+        return store.upsert(`${TABLE}_follow`, {
+            user_from: from,
+            user_to: to
+        })
+    }
+
+    const following = async (user) => {
+        const join = {}
+        join[TABLE] = 'user_to'; // { user: 'user_to' }
+        const query = { user_from: user };
+		
+		return await store.query(`${TABLE}_follow`, query, join);
+    }
+    
     return {
         list,
         get,
         upsert,
-        remove
+        remove,
+        follow,
+        following
     }
 }

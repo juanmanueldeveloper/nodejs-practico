@@ -11,8 +11,6 @@ module.exports = (injectedStore) => {
 
     const login = async (username, password) => {
         let data = await store.query(TABLE, { username: username })
-
-        //data = JSON.parse(JSON.stringify(data))
         
         if(!data){
             data = { password: ''}
@@ -22,7 +20,7 @@ module.exports = (injectedStore) => {
         .then((isValid) => {
             if(isValid){
                 //TOKEN GENERATE
-                jwt.sign(data)            
+                return jwt.sign({ ...data })            
             }else{
                 throw error('Invalid information')
             }

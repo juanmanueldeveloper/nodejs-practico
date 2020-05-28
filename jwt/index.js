@@ -40,10 +40,12 @@ const check = {
         const result = decodeHeader(req)
         if(result.id !== owner){
             throw error('Permission denied', 401)
-        }
-        console.log(result)
-        
+        } 
+    },
+    logged: function(req) {
+        const result = decodeHeader(req)
     }
+    
 }
 
 module.exports = {

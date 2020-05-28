@@ -32,11 +32,29 @@ const remove = (req, res, next)=> {
     }).catch(next)
 }
 
+const follow = (req, res, next)=> {
+    controller.follow(req.user.id, req.params.id)
+    .then((result) => {
+        response.success(req, res, result, 200)
+    }).catch(next)
+}
+
+const following = (req, res, next) => {
+	return controller.following(req.params.id)
+		.then( (result) => {
+            response.success(req, res, result, 200)
+		})
+		.catch(next);
+}
+
 //ROUTES
 router.get('/', list)
 router.get('/:id', get)
 router.post('/', upsert)
 router.put('/', secure('update'), upsert)
 router.post('/:id', remove)
+router.post('/follow/:id', secure('follow'), follow)
+router.get('/:id/following', following);
+
 
 module.exports = router

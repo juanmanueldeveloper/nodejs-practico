@@ -7,6 +7,12 @@ module.exports = function checkAuth(action){
                 jwt.check.own(req, req.body.id)
                 next()
                 break;
+            
+            case 'follow':
+                jwt.check.logged(req)
+                next()
+                break;
+
             default:
                 next();
         }
