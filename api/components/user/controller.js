@@ -1,4 +1,3 @@
-const store = require('../../../store/dummy')
 const { nanoid } = require('nanoid')
 const auth = require('../auth')
 
@@ -37,7 +36,7 @@ module.exports = (injectedStore) => {
                 password: data.password
             })
         }
-        console.log('USER UPDATE', user)
+
         return store.upsert(TABLE, user);
     }
 

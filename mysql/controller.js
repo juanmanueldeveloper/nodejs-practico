@@ -79,9 +79,13 @@ const upsert = async (table, data) => {
     }
     
     if (row.length === 0) {
-      return insert(table, data);
+      return insert(table, data)
+        //.then((data) => console.log(data))
+        //.catch((err) => console.error(err))
     } else {
-      return update(table, data);
+      return update(table, data)
+        //.then((data) => console.log(data))
+        //.catch((err) =>console.error(err))
     }
 }
 

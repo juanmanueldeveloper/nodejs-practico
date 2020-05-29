@@ -1,5 +1,5 @@
 const controller = require('./controller')
 //const store = require('../../../store/dummy')
-const store = require('../../../store/remote-mysql')
+const store = require('../../mysql/controller')
 
 module.exports = controller(store)
