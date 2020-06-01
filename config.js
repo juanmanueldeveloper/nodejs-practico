@@ -20,4 +20,13 @@ module.exports = {
         port: process.env.MYSQL_SERVICE_PORT || 3002,
     },
     remoteDB: process.env.REMOTE_DB || false,
+    cacheService: {
+        host: process.env.MYSQL_SERVICE_HOST || 'localhost',
+        port: process.env.MYSQL_SERVICE_PORT || 3003,
+    },
+    redis: {
+        host: process.env.REDIS_HOST || 'redis-18597.c85.us-east-1-2.ec2.cloud.redislabs.com',
+        port: process.env.REDIS_PORT || '18597',
+        password: process.env.REDIS_PASSWORD || 'asBKc4ZUThxo994lIFz9HeMSFvGnb0jL'
+    }
 }
