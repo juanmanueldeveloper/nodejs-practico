@@ -18,5 +18,6 @@ module.exports = {
     postService: {
         host: process.env.MYSQL_SERVICE_HOST || 'localhost',
         port: process.env.MYSQL_SERVICE_PORT || 3002,
-    }
+    },
+    remoteDB: process.env.REMOTE_DB || false,
 }
